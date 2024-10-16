@@ -251,7 +251,7 @@ export default function SwapBox(props) {
   const tokens = getTokens(chainId);
   const fromTokens = tokens;
   const stableTokens = tokens.filter((token) => token.isStable);
-  const indexTokens = whitelistedTokens.filter((token) => !token.isStable && !token.isWrapped);
+  const indexTokens = whitelistedTokens.filter((token) => !token.isWrapped);
   const shortableTokens = indexTokens.filter((token) => token.isShortable);
 
   let toTokens = tokens;
@@ -1240,13 +1240,12 @@ export default function SwapBox(props) {
     callContract(chainId, contract, "deposit", {
       value: fromAmount,
       sentMsg: t`Swap submitted.`,
-      successMsg: t`Swapped ${formatAmount(fromAmount, fromToken.decimals, 4, true)} ${
-        fromToken.symbol
-      } for ${formatAmount(toAmount, toToken.decimals, 4, true)} ${toToken.symbol}!`,
+      successMsg: t`Swapped ${formatAmount(fromAmount, fromToken.decimals, 4, true)} ${fromToken.symbol
+        } for ${formatAmount(toAmount, toToken.decimals, 4, true)} ${toToken.symbol}!`,
       failMsg: t`Swap failed.`,
       setPendingTxns,
     })
-      .then(async (res) => {})
+      .then(async (res) => { })
       .finally(() => {
         setIsSubmitting(false);
       });
@@ -1259,12 +1258,11 @@ export default function SwapBox(props) {
     callContract(chainId, contract, "withdraw", [fromAmount], {
       sentMsg: t`Swap submitted!`,
       failMsg: t`Swap failed.`,
-      successMsg: t`Swapped ${formatAmount(fromAmount, fromToken.decimals, 4, true)} ${
-        fromToken.symbol
-      } for ${formatAmount(toAmount, toToken.decimals, 4, true)} ${toToken.symbol}!`,
+      successMsg: t`Swapped ${formatAmount(fromAmount, fromToken.decimals, 4, true)} ${fromToken.symbol
+        } for ${formatAmount(toAmount, toToken.decimals, 4, true)} ${toToken.symbol}!`,
       setPendingTxns,
     })
-      .then(async (res) => {})
+      .then(async (res) => { })
       .finally(() => {
         setIsSubmitting(false);
       });
@@ -1369,9 +1367,8 @@ export default function SwapBox(props) {
     callContract(chainId, contract, method, params, {
       value,
       sentMsg: t`Swap ${!isMarketOrder ? " order " : ""} submitted!`,
-      successMsg: t`Swapped ${formatAmount(fromAmount, fromToken.decimals, 4, true)} ${
-        fromToken.symbol
-      } for ${formatAmount(toAmount, toToken.decimals, 4, true)} ${toToken.symbol}!`,
+      successMsg: t`Swapped ${formatAmount(fromAmount, fromToken.decimals, 4, true)} ${fromToken.symbol
+        } for ${formatAmount(toAmount, toToken.decimals, 4, true)} ${toToken.symbol}!`,
       failMsg: t`Swap failed.`,
       setPendingTxns,
     })
