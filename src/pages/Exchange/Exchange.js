@@ -391,6 +391,7 @@ export const Exchange = forwardRef((props, ref) => {
 
   const positionQuery = getPositionQuery(whitelistedTokens, nativeTokenAddress);
 
+  console.log('chainId: ', chainId)
   const defaultCollateralSymbol = getConstant(chainId, "defaultCollateralSymbol");
   const defaultTokenSelection = useMemo(
     () => ({

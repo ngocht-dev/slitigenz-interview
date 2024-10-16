@@ -16,7 +16,7 @@ import { USD_DECIMALS } from "lib/legacy";
 export default function ChartTokenSelector(props) {
   const { chainId, selectedToken, onSelectToken, swapOption } = props;
   const [tabIndex, setTabIndex] = useState(1);
-  const [listFavoriteLocal, setListFavoriteLocal] = useState();
+  const [listFavoriteLocal, setListFavoriteLocal] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
   const listPairUrl = getServerUrl(chainId, "/symbols");
 
@@ -106,7 +106,7 @@ export default function ChartTokenSelector(props) {
     if (symbolInfo.isNative) {
       symbolInfo = getWrappedToken(chainId);
     }
-    return listPrice[symbolInfo.address];
+    return listPrice?.[symbolInfo.address] || 0;
   };
 
   return (
@@ -248,7 +248,7 @@ export default function ChartTokenSelector(props) {
                       );
                     }}
                     rowCount={(listFilterToken && listFilterToken.length) || 0}
-                    rowGetter={({ index }) => listFilterToken[index]}
+                    rowGetter={({ index }) => listFilterToken?.length > 0 ? listFilterToken[index] : {}}
                   >
                     <Column
                       dataKey="symbol"
