@@ -69,3 +69,4 @@ In the Trade Page, User can see the trading view graph of each Tokens you select
         User can buy / Sell ULP from Exchange direactly.
         
         - Sell / Buy Listed Token (ETH, USDT, BTC, BNB)
+# slitigenz-interview
