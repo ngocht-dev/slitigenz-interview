@@ -181,7 +181,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
   ],
 };
 
-export const DEFAULT_TOKEN = "0xd4c84c22c2f3b7a3980225cf66eed09cd379d1d4";
+export const DEFAULT_TOKEN = "0x87e1a7e1e8310e77829ac5e7e1bf85139d3ce053";
 
 export const ADDITIONAL_TOKENS: { [chainId: number]: Token[] } = {
   [ARBITRUM]: [
@@ -488,7 +488,7 @@ export function getNativeToken(chainId: number) {
 }
 
 export function getTokens(chainId: number) {
-  return TOKENS[chainId];
+  return TOKENS[chainId] || [];
 }
 
 export function isValidToken(chainId: number, address: string) {
